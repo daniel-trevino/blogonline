@@ -9,6 +9,9 @@
 # production
 /build
 
+# removing css from source control since it's a build product from sass files
+src/**/*.css
+
 # misc
 .DS_Store
 .env.local

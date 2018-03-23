@@ -1,0 +1,46 @@
+// Breakpoints
+$xs: 400px;
+$sm: 576px;
+$md: 767px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1600px;
+
+//Typography
+$font-heading: "Poppins", Helvetica, Arial, sans-serif;
+$font-body: "Raleway", Helvetica, Arial, sans-serif;
+$line-height: 1.5em !default;
+$text-bold: 700 !default;
+$text-medium: 500 !default;
+$text-normal: 400 !default;
+
+//Colors
+$color-primary: #ffc107;
+$color-secondary: #536dfe;
+$color-accent1: #8b93a7;
+$color-accent2: #24cfb1;
+$color-accent3: #dbe7ff;
+$color-black: #000000;
+$color-white: #ffffff;
+$color-gray1: #f0f0f0;
+$color-gray2: #b6b3c0;
+$color-gray3: #747474;
+$color-warning: #ffc107;
+$color-error: #ff9090;
+$color-success: #8aee9b;
+$size-list: "xs", "sm", "md", "lg", "xl", "xxl";
+
+// Helpers
+$border-radius: 4px !default;
+$big-border-radius: 1000px !default;
+
+// Tables
+$table-border-color: $color-gray2 !default;
+$table-background: $color-gray1 !default;
+$table-background-hover: lighten($color-primary, 10) !default;
+$table-color-hover: #fff !default;
+
+// Code
+$code-color: #333;
+$code-bg: #f5f2f0;
+$code-border: #ccc;
