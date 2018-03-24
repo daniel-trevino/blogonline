@@ -1,6 +1,11 @@
 module.exports = {
   extends: ["airbnb", "prettier"],
   plugins: ["react", "jsx-a11y", "import"],
+  parser: "babel-eslint",
+  parserOptions: {
+    sourceType: "module",
+    allowImportExportEverywhere: true
+  },
   env: {
     browser: true,
     node: true,

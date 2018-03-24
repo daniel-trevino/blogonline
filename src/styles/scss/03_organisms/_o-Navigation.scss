@@ -1,0 +1,122 @@
+.navigation {
+  position: relative;
+  width: 100%;
+  background-color: $color-primary;
+  border-bottom: 1px solid $color-accent2;
+  @include padding-y-xs;
+}
+
+.navigation__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include container;
+}
+
+.navigation__logo {
+  max-width: 200px;
+  width: 100%;
+}
+
+.navigation__menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  @include mq($until: lg) {
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    right: -256px;
+    overflow: auto;
+    align-items: flex-start;
+    width: 256px;
+    height: 100%;
+    background-color: $color-white;
+    border-left: 1px solid $color-accent2;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition-duration: 0.5s;
+    transition-property: right;
+  }
+}
+
+.navigation__menu--active {
+  right: 0;
+}
+
+.menuList {
+  display: flex;
+  align-items: center;
+  @include mq($until: lg) {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+.menuList__item {
+  padding: 0 0.5em;
+
+  .btn {
+    margin: 0;
+  }
+  &:last-child {
+    padding-right: 0;
+  }
+  @include mq($until: lg) {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid $color-accent2 !important;
+    @include padding-xs;
+    &:first-child {
+      border: 0;
+    }
+    &:last-child {
+      @include padding-xs;
+    }
+    .btn {
+      width: 100%;
+    }
+  }
+  .textAnchor {
+    color: $color-black;
+  }
+  .textAnchor:hover {
+    color: $color-primary;
+    text-decoration: underline;
+  }
+}
+
+.menuList__item--active {
+  .textAnchor {
+    color: $color-primary;
+    text-decoration: underline;
+  }
+}
+
+.navigation__language {
+  margin: 0;
+  @include padding-l-xs;
+  @include padding-r-sm;
+}
+
+.navigation__hamburger {
+  @include typi("h1");
+  position: absolute !important;
+  float: right;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  visibility: hidden;
+  transform: translateY(-50%);
+  cursor: pointer;
+  @include mq($until: lg) {
+    z-index: 999;
+    visibility: visible;
+  }
+}
