@@ -1,0 +1,67 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  @include padding-y-lg;
+  @include padding-x-lg;
+
+  @include mq($until: md) {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+    .container {
+      padding: 0;
+    }
+  }
+}
+
+.post__image {
+  border: 1px solid $color-gray1;
+}
+
+.post__heading {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.post__title {
+  text-align: center;
+  @include padding-t-md;
+}
+
+.post__meta {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  @include padding-t-xs;
+
+  p {
+    font-size: 0.8em;
+    color: $color-gray2;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 10%;
+    margin: 1em auto 0 auto;
+    height: 3px;
+    bottom: 0;
+    background-color: $color-gray2;
+  }
+}
+
+.post__division {
+  @include margin-x-xs;
+}
+
+.post__content {
+  @include padding-t-md;
+}

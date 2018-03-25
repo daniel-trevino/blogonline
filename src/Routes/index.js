@@ -10,6 +10,11 @@ const Frontpage = Loadable({
   loading: Loading
 });
 
+const SinglePost = Loadable({
+  loader: () => import("../components/pages/SinglePost"),
+  loading: Loading
+});
+
 const App = Loadable({
   loader: () => import("../components/organisms/App"),
   loading: Loading
@@ -24,6 +29,7 @@ export default () => (
   <Router>
     <Switch>
       <Route exact path="/" component={Frontpage} />
+      <Route exact path="/blog/:id" component={SinglePost} />
       <Route exact path="/app" component={App} />
       <Route component={NotFound} />
     </Switch>

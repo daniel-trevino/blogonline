@@ -1,8 +1,8 @@
 .navigation {
   position: relative;
   width: 100%;
-  background-color: $color-primary;
-  border-bottom: 1px solid $color-accent2;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-gray1;
   @include padding-y-xs;
 }
 

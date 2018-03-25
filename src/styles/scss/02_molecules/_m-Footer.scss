@@ -1,0 +1,11 @@
+.footer__copyright {
+  background-color: $color-primary;
+  text-align: center;
+  color: $color-white;
+  @include padding-y-xs;
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+}

@@ -1,0 +1,31 @@
+.card__paper {
+  height: 33%;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  display: "inline-block";
+  @include margin-b-md;
+}
+
+.card__content {
+  @include padding-y-xs;
+  @include padding-x-md;
+}
+
+.card__meta {
+  display: flex;
+  flex: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.card__meta__item {
+  @include padding-x-xs;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  span {
+    @include padding-l-xs;
+  }
+}
