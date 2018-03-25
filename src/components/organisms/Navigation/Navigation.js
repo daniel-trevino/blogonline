@@ -7,12 +7,12 @@ import logoImage from "../../../images/Blogonline-logo.png";
 
 const navigationItems = [
   {
-    label: "Login",
-    href: "/login"
-  },
-  {
     label: "Sign Up",
     href: "/signup"
+  },
+  {
+    label: "Login",
+    href: "/login"
   }
 ];
 
