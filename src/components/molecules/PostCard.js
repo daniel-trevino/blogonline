@@ -1,17 +1,25 @@
 import React, { Component } from "react";
+import IconMenu from "material-ui/IconMenu";
+import MenuItem from "material-ui/MenuItem";
+import IconButton from "material-ui/IconButton";
+import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import Paper from "material-ui/Paper";
 import FontIcon from "material-ui/FontIcon";
+import DeleteModal from "../molecules/DeleteModal";
 import { Image } from "../atoms/Image";
 import imageTest from "../../images/stockholm.jpg";
 
 class PostCard extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    shadow: 1,
+    deleteModal: false
+  };
 
-    this.state = { shadow: 1 };
-  }
   onMouseOver = () => this.setState({ shadow: 5 });
   onMouseOut = () => this.setState({ shadow: 2 });
+  onClickDelete = () => this.setState({ deleteModal: true });
+  closeHandleDelete = () => this.setState({ deleteModal: false });
+  deleteHandle = () => this.setState({ deleteModal: false });
   render() {
     return (
       <article
@@ -21,8 +29,22 @@ class PostCard extends Component {
         onMouseOut={this.onMouseOut}
         onBlur={this.onMouseOut}
       >
-        <a href="/blog/title">
-          <Paper className="postCard__paper" zDepth={this.state.shadow}>
+        <Paper className="postCard__paper" zDepth={this.state.shadow}>
+          <div className="postCard__menu">
+            <IconMenu
+              iconButtonElement={
+                <IconButton>
+                  <MoreVertIcon />
+                </IconButton>
+              }
+              anchorOrigin={{ horizontal: "left", vertical: "top" }}
+              targetOrigin={{ horizontal: "left", vertical: "top" }}
+            >
+              <MenuItem primaryText="Edit" />
+              <MenuItem primaryText="Delete" onClick={this.onClickDelete} />
+            </IconMenu>
+          </div>
+          <a href="/title">
             <Image src={imageTest} alt="Image" />
             <div className="postCard__content">
               <div className="postCard__title">
@@ -42,8 +64,13 @@ class PostCard extends Component {
                 </p>
               </div>
             </div>
-          </Paper>
-        </a>
+          </a>
+        </Paper>
+        <DeleteModal
+          {...this.state}
+          closeHandleDelete={this.closeHandleDelete}
+          deleteHandle={this.deleteHandle}
+        />
       </article>
     );
   }

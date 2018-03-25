@@ -33,10 +33,12 @@ class Navigation extends Component {
     // ignore clicks on the component itself
     if (
       targetClass.includes("navigation__menu") ||
-      targetClass.includes("form__select")
+      targetClass.includes("form__select") ||
+      targetClass.includes("")
     ) {
       return;
     }
+
     this.clickHandler(e);
   }
   clickHandler(e) {

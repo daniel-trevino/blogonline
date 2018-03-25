@@ -1,0 +1,15 @@
+.postMaker {
+  display: flex;
+  justify-content: flex-end;
+  @include padding-t-lg;
+}
+
+.postMaker__button {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+
+  h2 {
+    @include padding-x-xs;
+  }
+}

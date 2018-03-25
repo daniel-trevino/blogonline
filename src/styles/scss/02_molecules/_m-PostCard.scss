@@ -5,6 +5,16 @@
   text-align: center;
   display: "inline-block";
   @include margin-b-md;
+
+  a {
+    color: $color-black;
+  }
+}
+
+.postCard__menu {
+  position: absolute;
+  float: left;
+  z-index: 10;
 }
 
 .postCard__content {
