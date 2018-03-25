@@ -4,7 +4,7 @@ import FontIcon from "material-ui/FontIcon";
 import { Image } from "../atoms/Image";
 import imageTest from "../../images/stockholm.jpg";
 
-class Card extends Component {
+class PostCard extends Component {
   constructor(props) {
     super(props);
 
@@ -15,28 +15,28 @@ class Card extends Component {
   render() {
     return (
       <article
-        className="card"
+        className="postCard"
         onMouseOver={this.onMouseOver}
         onFocus={this.onMouseOver}
         onMouseOut={this.onMouseOut}
         onBlur={this.onMouseOut}
       >
         <a href="/blog/title">
-          <Paper className="card__paper" zDepth={this.state.shadow}>
+          <Paper className="postCard__paper" zDepth={this.state.shadow}>
             <Image src={imageTest} alt="Image" />
-            <div className="card__content">
-              <div className="card__title">
+            <div className="postCard__content">
+              <div className="postCard__title">
                 <h4>How to drive 12 hours in your taxi without being bored</h4>
               </div>
-              <div className="card__date">
+              <div className="postCard__date">
                 <p>28 march, 2018</p>
               </div>
-              <div className="card__meta">
-                <p className="card__meta__item">
+              <div className="postCard__meta">
+                <p className="postCard__meta__item">
                   <FontIcon className="material-icons">remove_red_eye</FontIcon>
                   <span>5</span>
                 </p>
-                <p className="card__meta__item">
+                <p className="postCard__meta__item">
                   <FontIcon className="material-icons">forum</FontIcon>
                   <span>2</span>
                 </p>
@@ -49,4 +49,4 @@ class Card extends Component {
   }
 }
 
-export default Card;
+export default PostCard;

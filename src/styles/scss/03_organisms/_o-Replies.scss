@@ -1,0 +1,19 @@
+.replies {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  width: 74%;
+  @include padding-y-lg;
+
+  @include mq($until: md) {
+    width: 90%;
+  }
+}
+
+.replies__item {
+  @include padding-b-xs;
+}
+
+.replies__title {
+  @include padding-b-xs;
+}

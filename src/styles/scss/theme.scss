@@ -10,7 +10,7 @@
 @import "00_base/_helpers";
 
 // Molecules
-@import "02_molecules/m-Card";
+@import "02_molecules/m-PostCard";
 @import "02_molecules/m-Footer";
 
 // Organisms
@@ -21,3 +21,5 @@
 @import "03_organisms/o-Navigation";
 @import "03_organisms/o-NotFound";
 @import "03_organisms/o-Post";
+@import "03_organisms/o-Replies";
+@import "03_organisms/o-ReplyMaker";

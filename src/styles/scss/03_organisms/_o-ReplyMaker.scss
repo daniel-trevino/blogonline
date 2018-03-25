@@ -1,0 +1,29 @@
+.replyMaker {
+  background-color: $color-gray1;
+}
+
+.replyMaker__content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+
+  @include padding-y-lg;
+  @include padding-x-lg;
+
+  @include mq($until: md) {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    @include padding-y-lg;
+    .container {
+      padding: 0;
+    }
+  }
+}
+
+.replyMaker__button {
+  @include padding-t-xs;
+}

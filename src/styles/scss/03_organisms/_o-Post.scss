@@ -13,8 +13,13 @@
     margin: 0;
     width: 100%;
 
+    @include padding-b-lg;
     .container {
       padding: 0;
+    }
+
+    .post__content {
+      @include padding-x-xs;
     }
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import RaisedButton from "material-ui/RaisedButton";
-import Card from "../molecules/Card";
+import PostCard from "../molecules/PostCard";
 
 export default () => (
   <div className="blogpostGrid">
@@ -11,22 +11,22 @@ export default () => (
       <div className="container">
         <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-4">
-            <Card />
+            <PostCard />
           </div>
           <div className="col-sm-12 col-md-6 col-lg-4">
-            <Card />
+            <PostCard />
           </div>
           <div className="col-sm-12 col-md-6 col-lg-4">
-            <Card />
+            <PostCard />
           </div>
           <div className="col-sm-12 col-md-6 col-lg-4">
-            <Card />
+            <PostCard />
           </div>
           <div className="col-sm-12 col-md-6 col-lg-4">
-            <Card />
+            <PostCard />
           </div>
           <div className="col-sm-12 col-md-6 col-lg-4">
-            <Card />
+            <PostCard />
           </div>
         </div>
       </div>
