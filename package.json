@@ -31,6 +31,7 @@
   "scripts": {
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
+    "start:prod": "pushstate-server build 80",
     "precommit": "pretty-quick --staged",
     "build-js": "react-scripts build",
     "flow": "flow init",
