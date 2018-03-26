@@ -1,14 +1,14 @@
 import React from "react";
 import Body from "../molecules/Body";
 import Navigation from "../organisms/Navigation";
-import HeroHeader from "../organisms/HeroHeader";
+import PostMaker from "../organisms/PostMaker";
 import BlogpostGrid from "../organisms/BlogpostGrid";
 import Footer from "../molecules/Footer";
 
 export default () => (
   <Body>
     <Navigation />
-    <HeroHeader />
+    <PostMaker />
     <BlogpostGrid />
     <Footer />
   </Body>

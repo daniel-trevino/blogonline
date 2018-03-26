@@ -14,6 +14,7 @@ export default () => (
 
       <div className="heroHeader__button-container">
         <RaisedButton
+          href="/login"
           className="heroHeader__button"
           label="Create a post"
           primary

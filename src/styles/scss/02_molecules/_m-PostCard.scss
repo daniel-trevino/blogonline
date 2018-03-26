@@ -1,0 +1,41 @@
+.postCard__paper {
+  height: 33%;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  display: "inline-block";
+  @include margin-b-md;
+
+  a {
+    color: $color-black;
+  }
+}
+
+.postCard__menu {
+  position: absolute;
+  float: left;
+  z-index: 10;
+}
+
+.postCard__content {
+  @include padding-y-xs;
+  @include padding-x-md;
+}
+
+.postCard__meta {
+  display: flex;
+  flex: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.postCard__meta__item {
+  @include padding-x-xs;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  span {
+    @include padding-l-xs;
+  }
+}

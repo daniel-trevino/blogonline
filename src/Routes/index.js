@@ -10,8 +10,23 @@ const Frontpage = Loadable({
   loading: Loading
 });
 
-const App = Loadable({
-  loader: () => import("../components/organisms/App"),
+const SinglePost = Loadable({
+  loader: () => import("../components/pages/SinglePost"),
+  loading: Loading
+});
+
+const Login = Loadable({
+  loader: () => import("../components/pages/Login"),
+  loading: Loading
+});
+
+const SignUp = Loadable({
+  loader: () => import("../components/pages/SignUp"),
+  loading: Loading
+});
+
+const Dashboard = Loadable({
+  loader: () => import("../components/pages/Dashboard"),
   loading: Loading
 });
 
@@ -24,7 +39,10 @@ export default () => (
   <Router>
     <Switch>
       <Route exact path="/" component={Frontpage} />
-      <Route exact path="/app" component={App} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path="/:id" component={SinglePost} />
       <Route component={NotFound} />
     </Switch>
   </Router>
