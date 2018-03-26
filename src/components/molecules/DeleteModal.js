@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
-import RaisedButton from "material-ui/RaisedButton";
 
 /**
  * Alerts are urgent interruptions, requiring acknowledgement, that inform the user about a situation.
@@ -23,7 +22,6 @@ export default class DeleteModal extends Component {
 
     return (
       <div>
-        <RaisedButton label="Alert" onClick={this.handleOpen} />
         <Dialog
           actions={actions}
           modal={false}
