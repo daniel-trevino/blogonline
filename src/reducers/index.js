@@ -1,8 +1,12 @@
 import { combineReducers } from "redux";
-import NavigationReducer from "../components/organisms/Navigation/reducer-navigation";
+import isNavOpen from "../components/organisms/Navigation/reducer-navigation";
+import currentUser from "../components/organisms/LoginForm/reducer-loginForm";
+import users from "./reducer-users";
+import posts from "./reducer-posts";
 
-export const allReducers = combineReducers({
-  isNavOpen: NavigationReducer
+export default combineReducers({
+  currentUser,
+  isNavOpen,
+  users,
+  posts
 });
-
-export default allReducers;

@@ -16,4 +16,8 @@
 
 .replies__title {
   @include padding-b-xs;
+
+  h3 {
+    font-weight: 400;
+  }
 }

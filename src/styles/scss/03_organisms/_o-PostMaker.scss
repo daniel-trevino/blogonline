@@ -11,5 +11,6 @@
 
   h2 {
     @include padding-x-xs;
+    font-weight: 400;
   }
 }

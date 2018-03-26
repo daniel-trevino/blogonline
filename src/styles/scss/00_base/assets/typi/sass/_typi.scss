@@ -53,19 +53,11 @@ $typefaces: (
   primary:
     (
       font-size-ratio: 1,
-      stack: ("Helvetica Neue", Helvetica, Arial, sans-serif),
+      stack: ("Roboto", Helvetica, Arial, sans-serif),
       weights: (light: 300, normal: 400, bold: 700)
     ),
-  heading:
-    (
-      font-size-ratio: 1,
-      stack: ("Helvetica Neue", Helvetica, Arial, sans-serif)
-    ),
-  body:
-    (
-      font-size-ratio: 1,
-      stack: ("Helvetica Neue", Helvetica, Arial, sans-serif)
-    ),
+  heading: (font-size-ratio: 1, stack: ("Roboto", Helvetica, Arial, sans-serif)),
+  body: (font-size-ratio: 1, stack: ("Roboto", Helvetica, Arial, sans-serif)),
   code: (font-size-radio: 1, stack: (Consolas, Monaco, Andale Mono, monospace))
 );
 

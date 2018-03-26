@@ -37,6 +37,10 @@
 .post__title {
   text-align: center;
   @include padding-t-md;
+
+  h1 {
+    font-weight: 400;
+  }
 }
 
 .post__meta {
@@ -48,6 +52,7 @@
 
   p {
     font-size: 0.8em;
+    font-weight: 300;
     color: $color-gray2;
   }
 
@@ -57,7 +62,7 @@
     display: block;
     width: 10%;
     margin: 1em auto 0 auto;
-    height: 3px;
+    height: 2px;
     bottom: 0;
     background-color: $color-gray2;
   }
@@ -69,4 +74,8 @@
 
 .post__content {
   @include padding-t-md;
+
+  p {
+    font-weight: 400;
+  }
 }

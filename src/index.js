@@ -3,23 +3,22 @@ import ReactDOM from "react-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import AppRoutes from "./Routes/";
 import ThemeColors from "./components/atoms/ThemeColors";
-import { configureStoreProd, configureStoreDev } from "./store";
+import { persistor, store } from "./store";
 import registerServiceWorker from "./registerServiceWorker";
 import "./styles/scss/theme.css";
 
 const theme = getMuiTheme(ThemeColors);
-const store =
-  process.env.REACT_APP_HOST_ENV === "production"
-    ? configureStoreProd()
-    : configureStoreDev();
 
 ReactDOM.render(
   <MuiThemeProvider muiTheme={theme}>
-    <Provider store={store}>
-      <AppRoutes />
-    </Provider>
+    <PersistGate persistor={persistor}>
+      <Provider store={store}>
+        <AppRoutes />
+      </Provider>
+    </PersistGate>
   </MuiThemeProvider>,
   document.getElementById("root")
 );

@@ -37,7 +37,7 @@ class PostCard extends Component {
                   <MoreVertIcon />
                 </IconButton>
               }
-              anchorOrigin={{ horizontal: "left", vertical: "top" }}
+              anchorOrigin={{ horizontal: "right", vertical: "top" }}
               targetOrigin={{ horizontal: "left", vertical: "top" }}
             >
               <MenuItem primaryText="Edit" />

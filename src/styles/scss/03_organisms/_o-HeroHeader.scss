@@ -10,7 +10,7 @@
 .heroHeader__backgroundImage {
   height: 400px;
   width: 100%;
-  opacity: 0.4;
+  opacity: 0.25;
   background-size: cover;
 }
 
@@ -25,6 +25,11 @@
 
 .heroHeader__title {
   max-width: 100%;
+
+  h1,
+  h2 {
+    font-weight: 400;
+  }
 }
 
 .heroHeader__button-container {

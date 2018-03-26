@@ -1,29 +1,33 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import IconButton from "material-ui/IconButton";
 import RaisedButton from "material-ui/RaisedButton";
+import { logoutRequest } from "../LoginForm/actions-loginForm";
 import { Image } from "../../atoms/Image";
 import logoImage from "../../../images/Blogonline-logo.png";
-
-const navigationItems = [
-  {
-    label: "Sign Up",
-    href: "/signup"
-  },
-  {
-    label: "Login",
-    href: "/login"
-  }
-];
 
 class Navigation extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...this.props };
+    this.state = {
+      ...this.props,
+      navigationItems: [
+        {
+          label: this.props.currentUser ? "Dashboard" : "Sign Up",
+          href: this.props.currentUser ? "/dashboard" : "/signup"
+        },
+        {
+          label: this.props.currentUser ? "Logout" : "Login",
+          href: this.props.currentUser ? "" : "/login"
+        }
+      ]
+    };
 
     this.clickOutside = this.clickOutside.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
+    this.logoutHandler = this.logoutHandler.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     this.setState({ ...nextProps });
@@ -45,11 +49,20 @@ class Navigation extends Component {
     e.preventDefault();
     if (!this.state.isNavOpen) {
       document.addEventListener("click", this.clickOutside, false);
-      this.props.navStatus(true);
+      this.props.setNav(true);
     } else {
       document.removeEventListener("click", this.clickOutside, false);
-      this.props.navStatus(false);
+      this.props.setNav(false);
     }
+  }
+  logoutHandler() {
+    logoutRequest(this.state.currentUser).then(res => {
+      if (!res) {
+        this.props.setUser(res);
+        this.props.history.push("/login");
+      }
+      return false;
+    });
   }
   render() {
     return (
@@ -66,13 +79,18 @@ class Navigation extends Component {
             }`}
           >
             <ul className="menuList">
-              {navigationItems.map(item => (
+              {this.state.navigationItems.map(item => (
                 <li className="menuList__item" key={item.href}>
                   <RaisedButton
                     className="btn"
                     label={item.label}
                     secondary
                     href={item.href}
+                    onClick={
+                      this.state.currentUser && !item.href
+                        ? this.logoutHandler
+                        : undefined
+                    }
                   />
                 </li>
               ))}
@@ -93,11 +111,11 @@ class Navigation extends Component {
 }
 
 Navigation.defaultProps = {
-  navStatus: undefined
+  setNav: undefined
 };
 
 Navigation.propTypes = {
-  navStatus: PropTypes.func
+  setNav: PropTypes.func
 };
 
-export default Navigation;
+export default withRouter(Navigation);
