@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Loadable from "react-loadable";
 import LoadingScreen from "../components/organisms/LoadingScreen";
+import users from "../data/users";
 
 const Loading = () => <LoadingScreen />;
 
@@ -42,6 +43,9 @@ const NotFound = Loadable({
 
 export default class Routes extends Component {
   state = { ...this.props };
+  componentWillMount() {
+    if (!this.props.users) this.props.loadUsers(users);
+  }
   componentWillReceiveProps(nextProps) {
     this.setState({ ...nextProps });
   }
@@ -64,7 +68,13 @@ export default class Routes extends Component {
               !this.state.currentUser ? <Redirect to="/login" /> : <NotFound />
             }
           />
-          <Route exact path="/signup" component={SignUp} />
+          <Route
+            exact
+            path="/signup"
+            render={() =>
+              this.state.currentUser ? <Redirect to="/dashboard" /> : <SignUp />
+            }
+          />
           <Route
             exact
             path="/dashboard"
