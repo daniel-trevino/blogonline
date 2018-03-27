@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import TextField from "material-ui/TextField";
 import Snackbar from "material-ui/Snackbar";
 import RaisedButton from "material-ui/RaisedButton";
-import { appendNewReply } from "../../../actions/posts";
+import { appendNewReply, validateEmptyField } from "../../../actions/posts";
 
 class ReplyMaker extends Component {
   constructor(props) {
@@ -12,7 +12,11 @@ class ReplyMaker extends Component {
 
     this.state = {
       ...this.props,
-      open: false
+      open: false,
+      name: "",
+      content: "",
+      errorTextName: "",
+      errorTextContent: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,7 +28,9 @@ class ReplyMaker extends Component {
   handleChange({ target }) {
     this.setState({
       [target.name]: target.value,
-      errorText: ""
+      errorText: "",
+      errorTextTitle: "",
+      errorTextContent: ""
     });
   }
   handleSubmit() {
@@ -35,13 +41,21 @@ class ReplyMaker extends Component {
       date: moment(Date.now()).format("LL")
     };
 
+    if (!validateEmptyField(name)) {
+      this.setState({ errorTextTitle: "The field is required" });
+      return;
+    } else if (!validateEmptyField(content)) {
+      this.setState({ errorTextContent: "The field is required" });
+      return;
+    }
+
     appendNewReply(currentPostId, posts.data, newComment).then(updatedPosts => {
       this.props.updatePosts(updatedPosts);
 
       this.setState({
         open: true,
         name: "",
-        comment: ""
+        content: ""
       });
     });
   }
@@ -57,7 +71,9 @@ class ReplyMaker extends Component {
             fullWidth
             hintText="John Doe"
             floatingLabelText="Your name"
+            value={this.state.name}
             name="name"
+            errorText={this.state.errorTextTitle}
             onChange={this.handleChange}
             onBlur={this.handleChange}
           />
@@ -67,7 +83,9 @@ class ReplyMaker extends Component {
             floatingLabelText="Your comment"
             multiLine
             rows={3}
+            value={this.state.content}
             name="content"
+            errorText={this.state.errorTextContent}
             onChange={this.handleChange}
             onBlur={this.handleChange}
           />
