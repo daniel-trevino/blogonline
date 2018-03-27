@@ -16,11 +16,16 @@ export const loginRequest = (
   email: string,
   password: string
 ): Promise<?Object> =>
-  new Promise(resolve => {
+  new Promise((resolve, reject) => {
+    let userFound = null;
     users.map(
       user =>
         user.email === email && user.password === password
-          ? resolve(user)
-          : resolve(null)
+          ? (userFound = user)
+          : false
     );
+
+    userFound
+      ? resolve(userFound)
+      : reject({ errorText: "Invalid credentials" });
   });

@@ -23,12 +23,11 @@ export default class LoginForm extends Component {
   }
   loginHandler() {
     const { users, email, password } = this.state;
-    loginRequest(users, email, password).then(
-      res =>
-        res
-          ? this.props.currentUser(res)
-          : this.setState({ errorText: "Invalid credentials" })
-    );
+    loginRequest(users.data, email, password)
+      .then(res => {
+        if (res) this.props.currentUser(res);
+      })
+      .catch(e => this.setState({ ...e }));
   }
   render() {
     return (

@@ -3,7 +3,6 @@ import { bindActionCreators } from "redux";
 import { currentUser } from "./actions-loginForm";
 import LoginForm from "./LoginForm";
 
-// Binding the value of currentLanguage (to get it)
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
   users: state.users

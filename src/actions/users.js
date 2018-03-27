@@ -1,9 +1,9 @@
 // @flow
 export const INITIAL_USERS = "INITIAL_USERS";
-export const USERS = "USERS";
+export const UPDATE_USERS = "UPDATE_USERS";
 
 export const updateUsers = (result: Array<Object>): Object => ({
-  type: USERS,
+  type: UPDATE_USERS,
   payload: result
 });
 

@@ -8,6 +8,7 @@ import {
 import Loadable from "react-loadable";
 import LoadingScreen from "../components/organisms/LoadingScreen";
 import users from "../data/users";
+import posts from "../data/posts";
 
 const Loading = () => <LoadingScreen />;
 
@@ -44,7 +45,8 @@ const NotFound = Loadable({
 export default class Routes extends Component {
   state = { ...this.props };
   componentWillMount() {
-    if (!this.props.users) this.props.loadUsers(users);
+    if (!this.props.users) this.props.setUsers(users);
+    if (!this.props.posts) this.props.setPosts(posts);
   }
   componentWillReceiveProps(nextProps) {
     this.setState({ ...nextProps });

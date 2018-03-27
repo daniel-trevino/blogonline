@@ -7,7 +7,6 @@ import Paper from "material-ui/Paper";
 import FontIcon from "material-ui/FontIcon";
 import DeleteModal from "../molecules/DeleteModal";
 import { Image } from "../atoms/Image";
-import imageTest from "../../images/stockholm.jpg";
 
 class PostCard extends Component {
   state = {
@@ -44,23 +43,23 @@ class PostCard extends Component {
               <MenuItem primaryText="Delete" onClick={this.onClickDelete} />
             </IconMenu>
           </div>
-          <a href="/title">
-            <Image src={imageTest} alt="Image" />
+          <a href={`/${this.props.postId}`}>
+            <Image src={this.props.image} alt="Image" />
             <div className="postCard__content">
               <div className="postCard__title">
-                <h4>How to drive 12 hours in your taxi without being bored</h4>
+                <h4>{this.props.title}</h4>
               </div>
               <div className="postCard__date">
-                <p>28 march, 2018</p>
+                <p>{this.props.date}</p>
               </div>
               <div className="postCard__meta">
                 <p className="postCard__meta__item">
                   <FontIcon className="material-icons">remove_red_eye</FontIcon>
-                  <span>5</span>
+                  <span>{this.props.views}</span>
                 </p>
                 <p className="postCard__meta__item">
                   <FontIcon className="material-icons">forum</FontIcon>
-                  <span>2</span>
+                  <span>{this.props.comments.length}</span>
                 </p>
               </div>
             </div>

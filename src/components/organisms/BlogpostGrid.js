@@ -1,36 +1,21 @@
 import React from "react";
-import RaisedButton from "material-ui/RaisedButton";
 import PostCard from "../molecules/PostCard";
 
-export default () => (
+export default props => (
   <div className="blogpostGrid">
     <div className="blogpostGrid__title">
-      <h3>Latest from the Blog</h3>
+      <h3>{props.title}</h3>
     </div>
     <div className="blogpostGrid__content">
       <div className="container">
         <div className="row">
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <PostCard />
-          </div>
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <PostCard />
-          </div>
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <PostCard />
-          </div>
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <PostCard />
-          </div>
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <PostCard />
-          </div>
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <PostCard />
-          </div>
+          {props.data.map((post, i) => (
+            <div className="col-sm-12 col-md-6 col-lg-4" key={i}>
+              <PostCard {...post} />
+            </div>
+          ))}
         </div>
       </div>
-      <RaisedButton label="Load more" primary />
     </div>
   </div>
 );
