@@ -11,7 +11,7 @@ export default props => (
         <div className="row">
           {props.data.map((post, i) => (
             <div className="col-sm-12 col-md-6 col-lg-4" key={i}>
-              <PostCard {...post} />
+              <PostCard {...post} showIconMenu={props.showIconMenu} />
             </div>
           ))}
         </div>

@@ -2,34 +2,53 @@ import React, { Component } from "react";
 import Paper from "material-ui/Paper";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
-import { signUpRequest } from "./actions-signUpForm";
+import { signUpRequest, validateEmptyField } from "./actions-signUpForm";
 
 export default class SignUpForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...this.props };
+    this.state = {
+      ...this.props,
+      name: "",
+      email: "",
+      password: ""
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.signUpHandler = this.signUpHandler.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    console.log(this.state.users.data);
     this.setState({ ...nextProps });
   }
   handleChange({ target }) {
     this.setState({
       [target.name]: target.value,
-      errorText: ""
+      errorText: "",
+      errorTextName: "",
+      errorTextEmail: "",
+      errorTextPassword: ""
     });
   }
   signUpHandler() {
+    const { name, email, password, verify } = this.state;
     const possibleNewUser = {
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password,
-      verify: this.state.verify
+      name,
+      email,
+      password,
+      verify
     };
+
+    if (!validateEmptyField(name)) {
+      this.setState({ errorTextName: "The name is required" });
+      return;
+    } else if (!validateEmptyField(email)) {
+      this.setState({ errorType: "email", errorText: "The email is required" });
+      return;
+    } else if (!validateEmptyField(password)) {
+      this.setState({ errorTextPassword: "The field is required" });
+      return;
+    }
 
     signUpRequest(this.state.users.data, possibleNewUser)
       .then(newUsers => {
@@ -56,6 +75,7 @@ export default class SignUpForm extends Component {
               fullWidth
               hintText="John Doe"
               floatingLabelText="Name"
+              errorText={this.state.errorTextName}
               name="name"
               onChange={this.handleChange}
               onBlur={this.handleChange}
@@ -78,6 +98,7 @@ export default class SignUpForm extends Component {
             <TextField
               fullWidth
               hintText="Your password"
+              errorText={this.state.errorTextPassword}
               floatingLabelText="Password"
               type="password"
               name="password"

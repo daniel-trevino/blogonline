@@ -2,6 +2,9 @@
 export const verifyPassword = (newUser: Object): ?boolean =>
   newUser.password === newUser.verify ? true : false;
 
+export const validateEmptyField = (value: string) =>
+  value !== "" ? true : false;
+
 export const signUpRequest = (
   users: Array<Object>,
   newUser: Object

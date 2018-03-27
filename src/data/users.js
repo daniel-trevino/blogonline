@@ -2,13 +2,13 @@ export default [
   {
     userId: 1,
     name: "Daniel Treviño",
-    email: "daniel@test.com",
+    email: "daniel.trevino@blogonline.com",
     password: "12345"
   },
   {
     userId: 2,
-    name: "Ragnar Lodbrok",
-    email: "ragnar@test.com",
+    name: "John Doe",
+    email: "test@blogonline.com",
     password: "12345"
   }
 ];
