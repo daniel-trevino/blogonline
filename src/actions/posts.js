@@ -53,6 +53,14 @@ export const appendNewReply = (
   });
 };
 
+export const deletePost = (
+  postId: number,
+  posts: Array<Object>
+): Promise<Array<Object>> =>
+  new Promise(resolve => {
+    resolve(posts.filter(post => postId !== post.postId));
+  });
+
 export const getUserPosts = (
   posts: Array<Object>,
   currentUser: Object
@@ -74,3 +82,6 @@ export const incrementViews = (post: Object): Object => {
   post.views = post.views + 1;
   return post;
 };
+
+export const validateEmptyField = (value: string) =>
+  value !== "" ? true : false;

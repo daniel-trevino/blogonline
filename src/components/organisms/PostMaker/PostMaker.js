@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import moment from "moment";
+import { isWebUri } from "valid-url";
 import Snackbar from "material-ui/Snackbar";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 import ContentAdd from "material-ui/svg-icons/content/add";
 import PostModal from "../../molecules/PostModal";
-import { appendNewPost } from "../../../actions/posts";
+import defaultImage from "../../../images/post-default.png";
+import { appendNewPost, validateEmptyField } from "../../../actions/posts";
 
 class PostMaker extends Component {
   constructor(props) {
@@ -13,7 +15,9 @@ class PostMaker extends Component {
     this.state = {
       ...this.props,
       open: false,
-      openDialog: false
+      openDialog: false,
+      title: "",
+      content: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,15 +27,24 @@ class PostMaker extends Component {
   handleChange({ target }) {
     this.setState({
       [target.name]: target.value,
-      errorText: ""
+      errorTextTitle: "",
+      errorTextContent: ""
     });
   }
   handleSubmitDialog() {
     const { title, image, content, posts, currentUser } = this.state;
+    if (!validateEmptyField(title)) {
+      this.setState({ errorTextTitle: "The field is required" });
+      return;
+    } else if (!validateEmptyField(content)) {
+      this.setState({ errorTextContent: "The field is required" });
+      return;
+    }
+
     const newPost = {
       userId: currentUser.userId,
       postId: 0, // Adding 0 just to follow the order of keys in the object, it will be replaced in appendNewsPost
-      image,
+      image: isWebUri(image) ? image : defaultImage,
       title,
       content,
       views: 0,

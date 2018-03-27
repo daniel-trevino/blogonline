@@ -5,20 +5,34 @@ import IconButton from "material-ui/IconButton";
 import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import Paper from "material-ui/Paper";
 import FontIcon from "material-ui/FontIcon";
-import DeleteModal from "../molecules/DeleteModal";
-import { Image } from "../atoms/Image";
+import DeleteModal from "../../molecules/DeleteModal";
+import { deletePost } from "../../../actions/posts";
+import { Image } from "../../atoms/Image";
 
 class PostCard extends Component {
-  state = {
-    shadow: 1,
-    deleteModal: false
-  };
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      ...this.props,
+      shadow: 1,
+      deleteModal: false
+    };
+
+    this.deleteHandle = this.deleteHandle.bind(this);
+  }
+  componentWillReceiveProps = nextProps => this.setState({ ...nextProps });
   onMouseOver = () => this.setState({ shadow: 5 });
   onMouseOut = () => this.setState({ shadow: 2 });
   onClickDelete = () => this.setState({ deleteModal: true });
   closeHandleDelete = () => this.setState({ deleteModal: false });
-  deleteHandle = () => this.setState({ deleteModal: false });
+  deleteHandle() {
+    const { posts, postId } = this.state;
+    deletePost(postId, posts.data).then(updatedPosts => {
+      this.props.updatePosts(updatedPosts);
+      this.setState({ deleteModal: false });
+    });
+  }
   render() {
     return (
       <article
@@ -29,17 +43,20 @@ class PostCard extends Component {
         onBlur={this.onMouseOut}
       >
         <Paper className="postCard__paper" zDepth={this.state.shadow}>
-          <div className="postCard__menu">
+          <div
+            className={`postCard__menu ${
+              this.props.showIconMenu ? "postCard__menu--active" : ""
+            }`}
+          >
             <IconMenu
               iconButtonElement={
                 <IconButton>
                   <MoreVertIcon />
                 </IconButton>
               }
-              anchorOrigin={{ horizontal: "right", vertical: "top" }}
-              targetOrigin={{ horizontal: "left", vertical: "top" }}
+              anchorOrigin={{ horizontal: "left", vertical: "top" }}
+              targetOrigin={{ horizontal: "right", vertical: "top" }}
             >
-              <MenuItem primaryText="Edit" />
               <MenuItem primaryText="Delete" onClick={this.onClickDelete} />
             </IconMenu>
           </div>

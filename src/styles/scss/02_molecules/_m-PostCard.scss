@@ -34,9 +34,16 @@
 }
 
 .postCard__menu {
-  position: absolute;
-  float: left;
+  display: none;
+  background-color: white;
+  width: 100%;
+  text-align: right;
+  position: relative;
   z-index: 10;
+}
+
+.postCard__menu--active {
+  display: block;
 }
 
 .postCard__content {

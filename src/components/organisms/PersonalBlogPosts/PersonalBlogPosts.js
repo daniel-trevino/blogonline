@@ -28,6 +28,12 @@ export default class PersonalBlogPosts extends Component {
     this.setUserPosts(posts, currentUser);
   }
   render() {
-    return <BlogpostGrid title="My Blog posts" data={this.state.posts.data} />;
+    return (
+      <BlogpostGrid
+        title="My Blog posts"
+        data={this.state.posts.data}
+        showIconMenu
+      />
+    );
   }
 }

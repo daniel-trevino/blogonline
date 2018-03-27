@@ -11,7 +11,7 @@ Image.defaultProps = {
 
 Image.propTypes = {
   classType: PropTypes.string,
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
   alt: PropTypes.string.isRequired
 };
 
