@@ -14,6 +14,10 @@ You can do the following:
 * [x] Create Comments in Posts
 * [x] Count views on Posts
 
+Login with:<br>
+daniel.trevino@blogonline.com / 12345<br>
+test@blogonline.com / 12345
+
 ## I want to see it working
 
 You can see the application running [here](https://blogonline.tredan.se)
@@ -28,24 +32,24 @@ Followed by:
 
 ## Plugins used for styling
 
-[Bootstrap 4 (Grid)](https://getbootstrap.com/docs/4.0/layout/grid/)
-[Modular Scale Sass](https://github.com/modularscale/modularscale-sass)
-[Sass-mq](https://github.com/sass-mq/sass-mq)
-[Typi](https://github.com/zellwk/typi)
+[Bootstrap 4 (Grid)](https://getbootstrap.com/docs/4.0/layout/grid/)<br>
+[Modular Scale Sass](https://github.com/modularscale/modularscale-sass)<br>
+[Sass-mq](https://github.com/sass-mq/sass-mq)<br>
+[Typi](https://github.com/zellwk/typi)<br>
 [Material-UI](http://www.material-ui.com/#/components/app-bar)
 
 ## Plugins used in the application
 
-[React Router v4](https://github.com/ReactTraining/react-router)
+[React Router v4](https://github.com/ReactTraining/react-router)<br>
 [Redux Persist v5](https://github.com/rt2zz/redux-persist)
 
 ## Plugins used for development
 
-[ESLint Airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)
-[Editor Config](https://github.com/editorconfig/editorconfig-vim)
-[Flow](https://flow.org/en/docs/react/)
-[Prettier](https://github.com/prettier/prettier)
-[Husky](https://github.com/typicode/husky)
+[ESLint Airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)<br>
+[Editor Config](https://github.com/editorconfig/editorconfig-vim)<br>
+[Flow](https://flow.org/en/docs/react/)<br>
+[Prettier](https://github.com/prettier/prettier)<br>
+[Husky](https://github.com/typicode/husky)<br>
 
 ## Deployment config file
 
