@@ -7,20 +7,25 @@ export default class PersonalBlogPosts extends Component {
     super(props);
 
     this.state = { ...this.props };
+
+    this.setUserPosts = this.setUserPosts.bind(this);
   }
   componentWillMount() {
-    const userPosts = getUserPosts(
-      this.state.posts.data,
-      this.state.currentUser
-    );
-    this.setState({
-      posts: {
-        data: userPosts
-      }
+    const { posts, currentUser } = this.state;
+    this.setUserPosts(posts, currentUser);
+  }
+  setUserPosts(posts, currentUser) {
+    getUserPosts(posts.data, currentUser).then(userPosts => {
+      this.setState({
+        posts: {
+          data: userPosts
+        }
+      });
     });
   }
   componentWillReceiveProps(nextProps) {
-    this.setState({ ...nextProps });
+    const { posts, currentUser } = nextProps;
+    this.setUserPosts(posts, currentUser);
   }
   render() {
     return <BlogpostGrid title="My Blog posts" data={this.state.posts.data} />;

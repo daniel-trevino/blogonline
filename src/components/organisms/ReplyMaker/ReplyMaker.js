@@ -1,15 +1,50 @@
 import React, { Component } from "react";
+import moment from "moment";
+import { withRouter } from "react-router-dom";
 import TextField from "material-ui/TextField";
 import Snackbar from "material-ui/Snackbar";
 import RaisedButton from "material-ui/RaisedButton";
+import { appendNewReply } from "../../../actions/posts";
 
 class ReplyMaker extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { open: false };
+    this.state = {
+      ...this.props,
+      open: false
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleClick = () => this.setState({ open: true });
+  componentWillMount() {
+    this.setState({ currentPostId: this.props.match.params.id });
+  }
+  handleChange({ target }) {
+    this.setState({
+      [target.name]: target.value,
+      errorText: ""
+    });
+  }
+  handleSubmit() {
+    const { posts, name, content, currentPostId } = this.state;
+    const newComment = {
+      name,
+      content,
+      date: moment(Date.now()).format("LL")
+    };
+
+    appendNewReply(currentPostId, posts.data, newComment).then(updatedPosts => {
+      this.props.updatePosts(updatedPosts);
+
+      this.setState({
+        open: true,
+        name: "",
+        comment: ""
+      });
+    });
+  }
   handleRequestClose = () => this.setState({ open: false });
   render() {
     return (
@@ -22,6 +57,9 @@ class ReplyMaker extends Component {
             fullWidth
             hintText="John Doe"
             floatingLabelText="Your name"
+            name="name"
+            onChange={this.handleChange}
+            onBlur={this.handleChange}
           />
           <TextField
             fullWidth
@@ -29,12 +67,15 @@ class ReplyMaker extends Component {
             floatingLabelText="Your comment"
             multiLine
             rows={3}
+            name="content"
+            onChange={this.handleChange}
+            onBlur={this.handleChange}
           />
 
           <div className="replyMaker__button">
             <RaisedButton
               primary
-              onClick={this.handleClick}
+              onClick={this.handleSubmit}
               label="Add Comment"
             />
           </div>
@@ -51,4 +92,4 @@ class ReplyMaker extends Component {
   }
 }
 
-export default ReplyMaker;
+export default withRouter(ReplyMaker);

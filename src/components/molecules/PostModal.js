@@ -33,11 +33,17 @@ export default class PostModal extends Component {
             fullWidth
             hintText="Title"
             floatingLabelText="Post title"
+            name={this.props.nameTitle}
+            onChange={this.props.handleChange}
+            onBlur={this.props.handleChange}
           />
           <TextField
             fullWidth
             hintText="Image Url"
             floatingLabelText="Post Image URL"
+            name={this.props.nameImage}
+            onChange={this.props.handleChange}
+            onBlur={this.props.handleChange}
           />
           <TextField
             fullWidth
@@ -45,6 +51,9 @@ export default class PostModal extends Component {
             floatingLabelText="Post content"
             multiLine
             rows={3}
+            name={this.props.nameContent}
+            onChange={this.props.handleChange}
+            onBlur={this.props.handleChange}
           />
         </div>
       </Dialog>
