@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "dockerfileLines": [
-    "FROM node:8.7.0-alpine",
+    "FROM node:10.12-alpine",
     "RUN mkdir -p /src/app",
     "WORKDIR /src/app",
-    "ENV REACT_APP_HOST_ENV production",
-    "COPY ./src/package.json /src/app/",
-    "RUN npm install && npm install -g pushstate-server",
+    "ADD ./src/package.json /src/app/",
+    "ADD ./src/package-lock.json /src/app/",
+    "RUN npm install --silent",
     "COPY ./src /src/app",
     "RUN npm run build",
     "EXPOSE 80",
