@@ -8,6 +8,7 @@
 
 # production
 /build
+/dist
 
 # removing css from source control since it's a build product from sass files
 src/**/*.css

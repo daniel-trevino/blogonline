@@ -18,7 +18,8 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.9.1",
     "redux-promise": "^0.5.3",
-    "valid-url": "^1.0.9"
+    "valid-url": "^1.0.9",
+    "react-scripts": "1.1.1"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
@@ -31,8 +32,7 @@
     "flow-bin": "^0.68.0",
     "husky": "^0.14.3",
     "prettier": "1.11.1",
-    "pretty-quick": "^1.4.1",
-    "react-scripts": "1.1.1"
+    "pretty-quick": "^1.4.1"
   },
   "scripts": {
     "now-build": "react-scripts build && mv build dist",
