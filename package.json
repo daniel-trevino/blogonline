@@ -35,6 +35,7 @@
     "react-scripts": "1.1.1"
   },
   "scripts": {
+    "now-build": "react-scripts build && mv build dist",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "start:prod": "PORT=80 react-scripts start",
